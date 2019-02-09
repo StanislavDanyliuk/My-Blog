@@ -11,6 +11,8 @@ import { SearchWidgetComponent } from './search-widget/search-widget.component';
 import { CategoriesWidgetComponent } from './categories-widget/categories-widget.component';
 import { SideWidgetComponent } from './side-widget/side-widget.component';
 import { FooterComponent } from './footer/footer.component';
+import { NewPostComponent } from './new-post/new-post.component';
+import { NewPostPageComponent } from './new-post-page/new-post-page.component';
 
 @NgModule({
   declarations: [
@@ -23,6 +25,8 @@ import { FooterComponent } from './footer/footer.component';
     CategoriesWidgetComponent,
     SideWidgetComponent,
     FooterComponent,
+    NewPostComponent,
+    NewPostPageComponent,
   ],
   imports: [
     BrowserModule,
