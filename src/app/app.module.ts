@@ -17,6 +17,8 @@ import { AngularFireModule } from 'angularfire2';
 import { AngularFirestoreModule } from 'angularfire2/firestore';
 import { AngularFireAuthModule } from 'angularfire2/auth';
 import { environment } from '../environments/environment';
+import { SimplePostComponent } from './simple-post/simple-post.component';
+
 
 @NgModule({
   declarations: [
@@ -31,11 +33,19 @@ import { environment } from '../environments/environment';
     FooterComponent,
     NewPostComponent,
     NewPostPageComponent,
+    SimplePostComponent,
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
-    AngularFireModule.initializeApp(environment.firebase),
+    AngularFireModule.initializeApp({
+      apiKey: "AIzaSyBgFODrTVZBOZGjeRQBYSKZ6a7SwoWEJO4",
+      authDomain: "my-awesome-blog-f9b73.firebaseapp.com",
+      databaseURL: "https://my-awesome-blog-f9b73.firebaseio.com",
+      projectId: "my-awesome-blog-f9b73",
+      storageBucket: "my-awesome-blog-f9b73.appspot.com",
+      messagingSenderId: "545395090605"
+    }),
     AngularFirestoreModule, // imports firebase/firestore, only needed for database features
     AngularFireAuthModule, // imports firebase/auth, only needed for auth features
   ],
