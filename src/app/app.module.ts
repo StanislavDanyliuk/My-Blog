@@ -17,6 +17,7 @@ import { AngularFirestoreModule } from 'angularfire2/firestore';
 import { AngularFireAuthModule } from 'angularfire2/auth';
 import { SimplePostComponent } from './simple-post/simple-post.component';
 import { postsAndUsersService } from './posts-and-users.service'
+import { environment } from '../environments/environment';
 
 
 @NgModule({
@@ -37,14 +38,7 @@ import { postsAndUsersService } from './posts-and-users.service'
   imports: [
     BrowserModule,
     AppRoutingModule,
-    AngularFireModule.initializeApp({
-      apiKey: "AIzaSyBgFODrTVZBOZGjeRQBYSKZ6a7SwoWEJO4",
-      authDomain: "my-awesome-blog-f9b73.firebaseapp.com",
-      databaseURL: "https://my-awesome-blog-f9b73.firebaseio.com",
-      projectId: "my-awesome-blog-f9b73",
-      storageBucket: "my-awesome-blog-f9b73.appspot.com",
-      messagingSenderId: "545395090605"
-    }),
+    AngularFireModule.initializeApp(environment.firebase, 'angularfs'),
     AngularFirestoreModule,
     AngularFireAuthModule,
   ],
