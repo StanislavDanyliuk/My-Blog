@@ -1,4 +1,9 @@
 <app-header></app-header>
 <router-outlet></router-outlet>
+<ul>
+  <li class="text" *ngFor="let item of items | async">
+    {{post.name}}
+  </li>
+</ul>
 <app-modal-window-sign-in></app-modal-window-sign-in>
 <app-footer></app-footer>

@@ -1,4 +1,6 @@
 import { Component } from '@angular/core';
+import { AngularFirestore } from '@angular/fire/firestore';
+import { Observable } from 'rxjs';
 
 @Component({
   selector: 'app-root',
@@ -6,5 +8,9 @@ import { Component } from '@angular/core';
   styleUrls: ['./app.component.css']
 })
 export class AppComponent {
+  post: Observable<any[]>;
   title = 'My awesome Blog';
+  constructor(db:AngularFirestore) {
+    this.post = db.collection('post').valueChanges();
+  }
 }

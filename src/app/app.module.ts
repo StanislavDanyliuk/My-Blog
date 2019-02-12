@@ -1,6 +1,5 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
-
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { HeaderComponent } from './header/header.component';
@@ -16,8 +15,8 @@ import { NewPostPageComponent } from './new-post-page/new-post-page.component';
 import { AngularFireModule } from 'angularfire2';
 import { AngularFirestoreModule } from 'angularfire2/firestore';
 import { AngularFireAuthModule } from 'angularfire2/auth';
-import { environment } from '../environments/environment';
 import { SimplePostComponent } from './simple-post/simple-post.component';
+import { postsAndUsersService } from './posts-and-users.service'
 
 
 @NgModule({
@@ -46,10 +45,10 @@ import { SimplePostComponent } from './simple-post/simple-post.component';
       storageBucket: "my-awesome-blog-f9b73.appspot.com",
       messagingSenderId: "545395090605"
     }),
-    AngularFirestoreModule, // imports firebase/firestore, only needed for database features
-    AngularFireAuthModule, // imports firebase/auth, only needed for auth features
+    AngularFirestoreModule,
+    AngularFireAuthModule,
   ],
-  providers: [],
+  providers: [postsAndUsersService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

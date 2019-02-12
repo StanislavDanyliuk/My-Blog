@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { postsAndUsersService } from '../posts-and-users.service';
 
 @Component({
   selector: 'app-blog-post',
@@ -7,9 +8,12 @@ import { Component, OnInit } from '@angular/core';
 })
 export class BlogPostComponent implements OnInit {
 
-  constructor() { }
+  constructor(private postService: postsAndUsersService) { }
 
   ngOnInit() {
+    this.postService.getPosts().subscribe(posts => {
+      console.log(posts);
+    });
   }
 
 }
