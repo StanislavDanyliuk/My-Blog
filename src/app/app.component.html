@@ -1,8 +1,8 @@
 <app-header></app-header>
-<router-outlet></router-outlet>
+<!-- <router-outlet></router-outlet> -->
 <ul>
-  <li class="text" *ngFor="let item of items | async">
-    {{post.name}}
+  <li *ngFor="let post of posts">
+    {{post.value}}
   </li>
 </ul>
 <app-modal-window-sign-in></app-modal-window-sign-in>

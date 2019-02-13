@@ -13,7 +13,7 @@ import { FooterComponent } from './footer/footer.component';
 import { NewPostComponent } from './new-post/new-post.component';
 import { NewPostPageComponent } from './new-post-page/new-post-page.component';
 import { AngularFireModule } from 'angularfire2';
-import { AngularFirestoreModule } from 'angularfire2/firestore';
+import { AngularFireDatabaseModule } from 'angularfire2/database';
 import { AngularFireAuthModule } from 'angularfire2/auth';
 import { SimplePostComponent } from './simple-post/simple-post.component';
 import { postsAndUsersService } from './posts-and-users.service'
@@ -38,8 +38,8 @@ import { environment } from '../environments/environment';
   imports: [
     BrowserModule,
     AppRoutingModule,
-    AngularFireModule.initializeApp(environment.firebase, 'angularfs'),
-    AngularFirestoreModule,
+    AngularFireModule.initializeApp(environment.firebase),
+    AngularFireDatabaseModule,
     AngularFireAuthModule,
   ],
   providers: [postsAndUsersService],
