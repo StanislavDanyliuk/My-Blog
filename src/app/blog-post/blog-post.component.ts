@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input } from '@angular/core';
 import { postsAndUsersService } from '../posts-and-users.service';
 
 @Component({
@@ -12,5 +12,12 @@ export class BlogPostComponent implements OnInit {
 
   ngOnInit() {
   }
+
+  @Input() img: string;
+  @Input() title: string;
+  @Input() msg: string;
+  @Input() author: string;
+  @Input() date: string;
+  @Input() description: string;
 
 }

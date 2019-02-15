@@ -1,21 +1,17 @@
 import { Injectable } from '@angular/core';
-import { AngularFirestore, AngularFirestoreCollection } from 'angularfire2/firestore';
-import { Post } from './models/post';
-import { Observable } from 'rxjs';
+import { AngularFireDatabase } from 'angularfire2/database';
 
 
 @Injectable({
   providedIn: 'root'
 })
 export class postsAndUsersService {
-  postsCollection: AngularFirestoreCollection<Post>;
-  posts: Observable<Post[]>;
+  posts: any[];
 
-  // constructor(public afs: AngularFirestore) {
-  //   this.posts = this.afs.collection('/number').valueChanges();
-  // }
+  constructor(private http: AngularFireDatabase) {
+  }
 
   getPosts() {
-    return this.posts;
+    this.http.list('/posts').valueChanges();
   }
 }

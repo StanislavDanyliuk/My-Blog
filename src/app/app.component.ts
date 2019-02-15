@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { AngularFireDatabase} from 'angularfire2/database';
+import { AngularFireDatabase } from 'angularfire2/database';
 
 @Component({
   selector: 'app-root',
@@ -7,14 +7,11 @@ import { AngularFireDatabase} from 'angularfire2/database';
   styleUrls: ['./app.component.css']
 })
 export class AppComponent {
-  post: any[];
+  posts: any[];
 
   constructor(db: AngularFireDatabase) {
     db.list('/posts').valueChanges().subscribe(post => {
-      this.post = post;
-      console.log(this.post);
+      this.posts = post;
     })
-
-
   }
 }

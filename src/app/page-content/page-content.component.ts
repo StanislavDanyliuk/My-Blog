@@ -1,4 +1,7 @@
 import { Component, OnInit } from '@angular/core';
+// import { postsAndUsersService } from '../posts-and-users.service'
+import { AngularFireDatabase } from 'angularfire2/database';
+
 
 @Component({
   selector: 'app-page-content',
@@ -7,8 +10,13 @@ import { Component, OnInit } from '@angular/core';
 })
 export class PageContentComponent implements OnInit {
 
-  constructor() { }
+  posts;
 
+  constructor(db: AngularFireDatabase) {
+    db.list('/posts').valueChanges().subscribe(post => {
+      this.posts = post;
+    })
+  }
   ngOnInit() {
   }
 
