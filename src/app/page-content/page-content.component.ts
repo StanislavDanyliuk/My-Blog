@@ -19,5 +19,4 @@ export class PageContentComponent implements OnInit {
   }
   ngOnInit() {
   }
-
 }

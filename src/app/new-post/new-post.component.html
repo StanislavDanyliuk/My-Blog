@@ -2,74 +2,65 @@
 
   <div class="row">
 
-      <!-- Blog Entries Column -->
-      <div class="col-md-10 my-4 mx-auto">
+    <div class="col-md-10 my-4 mx-auto">
 
-          <h1 class="my-4">Page Heading
-              <small>Secondary Text</small>
-          </h1>
-
-          <div class="input-group input-group-lg mb-3">
-              <div class="input-group-prepend">
-                  <span class="input-group-text" id="basic-addon3">Header</span>
-              </div>
-              <input type="text" required minlength="4" class="form-control" id="basic-url" aria-describedby="basic-addon3">
-          </div>
-
-          <div class="input-group mb-3">
-              <div class="input-group-prepend">
-                  <span class="input-group-text" id="basic-addon3">Description</span>
-              </div>
-              <input type="text" class="form-control" id="basic-url" aria-describedby="basic-addon3">
-          </div>
-
-          <div class="input-group mb-3">
-              <div class="input-group-prepend">
-                  <span class="input-group-text" id="basic-addon1">#</span>
-              </div>
-              <input type="text" class="form-control" aria-label="Tags" aria-describedby="basic-addon1">
-          </div>
-
-          <div class="input-group mb-3">
-              <div class="input-group-prepend">
-                  <label class="input-group-text" for="inputGroupSelect01">Type</label>
-              </div>
-              <select class="custom-select" id="inputGroupSelect01">
-                  <option selected disabled>Choose...</option>
-                  <option value="1">One</option>
-                  <option value="2">Two</option>
-                  <option value="3">Three</option>
-              </select>
-          </div>
-
-          <div class="input-group mb-3">
-              <div class="input-group-prepend">
-                  <span class="input-group-text">Upload Image</span>
-              </div>
-              <div class="custom-file">
-                  <input type="file" class="custom-file-input" id="inputGroupFile01">
-                  <label class="custom-file-label" for="inputGroupFile01">Choose file</label>
-              </div>
-          </div>
-
-          <div class="custom-control custom-switch">
-              <input type="checkbox" class="custom-control-input" id="switch1">
-              <label class="custom-control-label" for="switch1">Post?</label>
-          </div>
-
-          <div class="input-group my-4">
-              <div class="input-group-prepend">
-                  <span class="input-group-text">Your Post</span>
-              </div>
-              <textarea class="form-control" aria-label="With textarea" rows="15"></textarea>
-          </div>
-
-          <div class="input-group my-4">
-              <button class="btn btn-primary mx-auto btn-lg" type="submit">Create Post</button>
-          </div>
-
+      <h1 class="my-4">Page Heading
+        <small>Secondary Text</small>
+      </h1>
+      <form id="newPost">
+      <div class="input-group input-group-lg mb-3">
+        <div class="input-group-prepend">
+          <span class="input-group-text" id="basic-addon3">Header</span>
+        </div>
+        <input type="text" required minlength="4" class="form-control" id="basic-url" aria-describedby="basic-addon3"
+          #newhead>
       </div>
-  </div>
 
-</div>
-<!-- /.row -->
+      <div class="input-group mb-3">
+        <div class="input-group-prepend">
+          <span class="input-group-text" id="basic-addon3">Description</span>
+        </div>
+        <input type="text" class="form-control" id="basic-url" aria-describedby="basic-addon3" #newdescription>
+      </div>
+
+      <div class="input-group mb-3">
+        <div class="input-group-prepend">
+          <label class="input-group-text" for="inputGroupSelect01">Type</label>
+        </div>
+        <select class="custom-select" id="inputGroupSelect01" #newtype>
+          <option selected disabled>Choose...</option>
+          <option value="One">One</option>
+          <option value="Two">Two</option>
+          <option value="Three">Three</option>
+        </select>
+      </div>
+
+      <div class="input-group mb-3">
+        <div class="input-group-prepend">
+          <span class="input-group-text">Upload Image</span>
+        </div>
+        <div class="custom-file">
+          <input type="file" class="custom-file-input" id="inputGroupFile01">
+          <label class="custom-file-label" for="inputGroupFile01" (change)="upload($event)">Choose file</label>
+        </div>
+      </div>
+
+      <div class="custom-control custom-switch">
+        <input type="checkbox" class="custom-control-input" id="switch1">
+        <label class="custom-control-label" for="switch1">Post?</label>
+      </div>
+
+      <div class="input-group my-4">
+        <div class="input-group-prepend">
+          <span class="input-group-text">Your Post</span>
+        </div>
+        <textarea class="form-control" aria-label="With textarea" rows="15" #newmsg></textarea>
+          </div>
+
+          <div class="input-group my-4">
+              <button class="btn btn-primary mx-auto btn-lg" type="submit" (click)="save(newhead.value, newdescription.value, newmsg.value, newtype.value); newPost.reset()">Create Post</button>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
