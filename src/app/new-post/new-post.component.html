@@ -25,6 +25,13 @@
 
       <div class="input-group mb-3">
         <div class="input-group-prepend">
+          <span class="input-group-text" id="basic-addon4">Date</span>
+        </div>
+        <input type="date" class="form-control" id="basic-date" aria-describedby="basic-addon4" #newdate>
+      </div>
+
+      <div class="input-group mb-3">
+        <div class="input-group-prepend">
           <label class="input-group-text" for="inputGroupSelect01">Type</label>
         </div>
         <select class="custom-select" id="inputGroupSelect01" #newtype>
@@ -35,7 +42,7 @@
         </select>
       </div>
 
-      <div class="input-group mb-3">
+      <!-- <div class="input-group mb-3">
         <div class="input-group-prepend">
           <span class="input-group-text">Upload Image</span>
         </div>
@@ -43,6 +50,13 @@
           <input type="file" class="custom-file-input" id="inputGroupFile01">
           <label class="custom-file-label" for="inputGroupFile01" (change)="upload($event)">Choose file</label>
         </div>
+      </div> -->
+
+      <div class="input-group mb-3">
+        <div class="input-group-prepend">
+          <span class="input-group-text" id="basic-addon5">Link to img</span>
+        </div>
+        <input type="text" class="form-control" id="basic-img" aria-describedby="basic-addon5" #newimg>
       </div>
 
       <div class="custom-control custom-switch">
@@ -58,7 +72,7 @@
           </div>
 
           <div class="input-group my-4">
-              <button class="btn btn-primary mx-auto btn-lg" type="submit" (click)="save(newhead.value, newdescription.value, newmsg.value, newtype.value); newPost.reset()">Create Post</button>
+              <button class="btn btn-primary mx-auto btn-lg" type="submit" (click)="save(newhead.value, newdescription.value, newmsg.value, newtype.value, newdate.value, newimg.value); newPost.reset()">Create Post</button>
           </div>
         </form>
       </div>

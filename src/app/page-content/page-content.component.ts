@@ -1,5 +1,4 @@
 import { Component, OnInit } from '@angular/core';
-// import { postsAndUsersService } from '../posts-and-users.service'
 import { AngularFireDatabase } from 'angularfire2/database';
 
 
@@ -9,7 +8,6 @@ import { AngularFireDatabase } from 'angularfire2/database';
   styleUrls: ['./page-content.component.css']
 })
 export class PageContentComponent implements OnInit {
-
   posts;
 
   constructor(db: AngularFireDatabase) {
