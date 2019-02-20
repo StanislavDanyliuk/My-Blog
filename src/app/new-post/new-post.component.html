@@ -8,6 +8,7 @@
         <small>Secondary Text</small>
       </h1>
       <form id="newPost" [formGroup]="postForm" (ngSubmit)="onSubmit()">
+        <!-- Header -->
         <div class="input-group input-group-lg mb-3">
           <div class="input-group-prepend">
             <span class="input-group-text" id="basic-addon2">Header</span>
@@ -19,7 +20,7 @@
             <div *ngIf="f.Header.errors.minlength">Header must be at least 4 characters</div>
           </div>
         </div>
-
+        <!-- Description -->
         <div class="input-group mb-3">
           <div class="input-group-prepend">
             <span class="input-group-text" id="basic-addon3">Description</span>
@@ -31,7 +32,7 @@
             <div *ngIf="f.Description.errors.minlength">Description must be at least 4 characters</div>
           </div>
         </div>
-
+        <!-- Date -->
         <div class="input-group mb-3">
           <div class="input-group-prepend">
             <span class="input-group-text" id="basic-addon6">Date</span>
@@ -48,7 +49,7 @@
             <div *ngIf="f.Date.errors.required">Date is required</div>
           </div>
         </div>
-
+        <!-- Type -->
         <div class="input-group mb-3">
           <div class="input-group-prepend">
             <label class="input-group-text" for="inputGroupSelect01">Type</label>
@@ -60,19 +61,19 @@
             <option value="Three">Three</option>
           </select>
         </div>
-
+        <!-- Img -->
         <div class="input-group mb-3">
           <div class="input-group-prepend">
             <span class="input-group-text" id="basic-addon5">Link to img</span>
           </div>
           <input type="text" class="form-control" id="basic-img" aria-describedby="basic-addon5" #newimg>
         </div>
-
+        <!-- Toggle -->
         <div class="custom-control custom-switch">
           <input type="checkbox" class="custom-control-input" id="switch1">
           <label class="custom-control-label" for="switch1">Post?</label>
         </div>
-
+        <!-- Message -->
         <div class="input-group my-4">
           <div class="input-group-prepend">
             <span class="input-group-text">Your Post</span>
@@ -84,7 +85,7 @@
             <div *ngIf="f.Message.errors.minlength">Message must be at least 100 characters</div>
           </div>
         </div>
-
+        <!-- Button -->
         <div class="input-group my-4">
           <button class="btn btn-primary mx-auto btn-lg"
             (click)="save(newhead.value, newdescription.value, newmsg.value, newtype.value, newdate.value, newimg.value); reset()">Create
