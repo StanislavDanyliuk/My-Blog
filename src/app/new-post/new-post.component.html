@@ -7,74 +7,90 @@
       <h1 class="my-4">Page Heading
         <small>Secondary Text</small>
       </h1>
-      <form id="newPost">
-      <div class="input-group input-group-lg mb-3">
-        <div class="input-group-prepend">
-          <span class="input-group-text" id="basic-addon3">Header</span>
-        </div>
-        <input type="text" required minlength="4" class="form-control" id="basic-url" aria-describedby="basic-addon3"
-          #newhead>
-      </div>
-
-      <div class="input-group mb-3">
-        <div class="input-group-prepend">
-          <span class="input-group-text" id="basic-addon3">Description</span>
-        </div>
-        <input type="text" class="form-control" id="basic-url" aria-describedby="basic-addon3" #newdescription>
-      </div>
-
-      <div class="input-group mb-3">
-        <div class="input-group-prepend">
-          <span class="input-group-text" id="basic-addon4">Date</span>
-        </div>
-        <input type="date" class="form-control" id="basic-date" aria-describedby="basic-addon4" #newdate>
-      </div>
-
-      <div class="input-group mb-3">
-        <div class="input-group-prepend">
-          <label class="input-group-text" for="inputGroupSelect01">Type</label>
-        </div>
-        <select class="custom-select" id="inputGroupSelect01" #newtype>
-          <option selected disabled>Choose...</option>
-          <option value="One">One</option>
-          <option value="Two">Two</option>
-          <option value="Three">Three</option>
-        </select>
-      </div>
-
-      <!-- <div class="input-group mb-3">
-        <div class="input-group-prepend">
-          <span class="input-group-text">Upload Image</span>
-        </div>
-        <div class="custom-file">
-          <input type="file" class="custom-file-input" id="inputGroupFile01">
-          <label class="custom-file-label" for="inputGroupFile01" (change)="upload($event)">Choose file</label>
-        </div>
-      </div> -->
-
-      <div class="input-group mb-3">
-        <div class="input-group-prepend">
-          <span class="input-group-text" id="basic-addon5">Link to img</span>
-        </div>
-        <input type="text" class="form-control" id="basic-img" aria-describedby="basic-addon5" #newimg>
-      </div>
-
-      <div class="custom-control custom-switch">
-        <input type="checkbox" class="custom-control-input" id="switch1">
-        <label class="custom-control-label" for="switch1">Post?</label>
-      </div>
-
-      <div class="input-group my-4">
-        <div class="input-group-prepend">
-          <span class="input-group-text">Your Post</span>
-        </div>
-        <textarea class="form-control" aria-label="With textarea" rows="15" #newmsg></textarea>
+      <form id="newPost" [formGroup]="postForm" (ngSubmit)="onSubmit()">
+        <div class="input-group input-group-lg mb-3">
+          <div class="input-group-prepend">
+            <span class="input-group-text" id="basic-addon2">Header</span>
           </div>
-
-          <div class="input-group my-4">
-              <button class="btn btn-primary mx-auto btn-lg" type="submit" (click)="save(newhead.value, newdescription.value, newmsg.value, newtype.value, newdate.value, newimg.value); newPost.reset()">Create Post</button>
+          <input type="text" class="form-control" id="basic-text" aria-describedby="basic-addon2" #newhead
+            formControlName="Header" [ngClass]="{ 'is-invalid': submitted && f.Header.errors }">
+          <div *ngIf="submitted && f.Header.errors" class="invalid-feedback">
+            <div *ngIf="f.Header.errors.required">Header is required</div>
+            <div *ngIf="f.Header.errors.minlength">Header must be at least 4 characters</div>
           </div>
-        </form>
-      </div>
+        </div>
+
+        <div class="input-group mb-3">
+          <div class="input-group-prepend">
+            <span class="input-group-text" id="basic-addon3">Description</span>
+          </div>
+          <input type="text" class="form-control" id="basic-url" aria-describedby="basic-addon3" #newdescription
+            formControlName="Description" [ngClass]="{ 'is-invalid': submitted && f.Description.errors }">
+          <div *ngIf="submitted && f.Description.errors" class="invalid-feedback">
+            <div *ngIf="f.Description.errors.required">Description is required</div>
+            <div *ngIf="f.Description.errors.minlength">Description must be at least 4 characters</div>
+          </div>
+        </div>
+
+        <div class="input-group mb-3">
+          <div class="input-group-prepend">
+            <span class="input-group-text" id="basic-addon6">Date</span>
+          </div>
+          <input class="form-control" placeholder="yyyy-mm-dd" name="dp" ngbDatepicker #d="ngbDatepicker" #newdate
+            (click)="d.toggle()" aria-describedby="basic-addon6" formControlName="Date"
+            [ngClass]="{ 'is-invalid': submitted && f.Date.errors }">
+          <div class="input-group-append">
+            <button class="btn btn-outline-secondary" (click)="d.toggle()" type="button">
+              <fa name="calendar"></fa>
+            </button>
+          </div>
+          <div *ngIf="submitted && f.Date.errors" class="invalid-feedback">
+            <div *ngIf="f.Date.errors.required">Date is required</div>
+          </div>
+        </div>
+
+        <div class="input-group mb-3">
+          <div class="input-group-prepend">
+            <label class="input-group-text" for="inputGroupSelect01">Type</label>
+          </div>
+          <select class="custom-select" id="inputGroupSelect01" #newtype>
+            <option selected disabled>Choose...</option>
+            <option value="One">One</option>
+            <option value="Two">Two</option>
+            <option value="Three">Three</option>
+          </select>
+        </div>
+
+        <div class="input-group mb-3">
+          <div class="input-group-prepend">
+            <span class="input-group-text" id="basic-addon5">Link to img</span>
+          </div>
+          <input type="text" class="form-control" id="basic-img" aria-describedby="basic-addon5" #newimg>
+        </div>
+
+        <div class="custom-control custom-switch">
+          <input type="checkbox" class="custom-control-input" id="switch1">
+          <label class="custom-control-label" for="switch1">Post?</label>
+        </div>
+
+        <div class="input-group my-4">
+          <div class="input-group-prepend">
+            <span class="input-group-text">Your Post</span>
+          </div>
+          <textarea class="form-control" aria-label="With textarea" rows="15" #newmsg formControlName="Message"
+            [ngClass]="{ 'is-invalid': submitted && f.Message.errors }"></textarea>
+          <div *ngIf="submitted && f.Message.errors" class="invalid-feedback">
+            <div *ngIf="f.Message.errors.required">Message is required</div>
+            <div *ngIf="f.Message.errors.minlength">Message must be at least 100 characters</div>
+          </div>
+        </div>
+
+        <div class="input-group my-4">
+          <button class="btn btn-primary mx-auto btn-lg"
+            (click)="save(newhead.value, newdescription.value, newmsg.value, newtype.value, newdate.value, newimg.value); reset()">Create
+            Post</button>
+        </div>
+      </form>
     </div>
   </div>
+</div>

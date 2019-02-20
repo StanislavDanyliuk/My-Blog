@@ -18,6 +18,11 @@ import { AngularFireAuthModule } from 'angularfire2/auth';
 import { SimplePostComponent } from './simple-post/simple-post.component';
 import { postsAndUsersService } from './posts-and-users.service'
 import { environment } from '../environments/environment';
+import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
+import { AngularFontAwesomeModule } from 'angular-font-awesome';
+import { ReactiveFormsModule } from '@angular/forms';
+import { FormsModule } from '@angular/forms';
+
 
 
 @NgModule({
@@ -41,6 +46,10 @@ import { environment } from '../environments/environment';
     AngularFireModule.initializeApp(environment.firebase),
     AngularFireDatabaseModule,
     AngularFireAuthModule,
+    NgbModule,
+    AngularFontAwesomeModule,
+    ReactiveFormsModule,
+    FormsModule,
   ],
   providers: [postsAndUsersService],
   bootstrap: [AppComponent]
