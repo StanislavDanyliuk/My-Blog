@@ -11,7 +11,6 @@ import { FormBuilder, FormGroup, Validators, ReactiveFormsModule, FormsModule } 
 export class NewPostComponent implements OnInit {
   postForm: FormGroup;
   submitted = false;
-
   postRef: AngularFireList<any>;
   post: Observable<any>;
 

@@ -33,6 +33,14 @@
           </div>
         </div>
         <!-- Date -->
+
+        <!-- <div class="input-group input-group-lg mb-3">
+          <div class="input-group-prepend">
+            <span class="input-group-text" id="basic-addon">data</span>
+          </div>
+          <input type="text" class="form-control" id="basic-date" aria-describedby="basic-addon" #newdate value={{this.today}}>
+        </div> -->
+
         <div class="input-group mb-3">
           <div class="input-group-prepend">
             <span class="input-group-text" id="basic-addon6">Date</span>
@@ -49,6 +57,7 @@
             <div *ngIf="f.Date.errors.required">Date is required</div>
           </div>
         </div>
+
         <!-- Type -->
         <div class="input-group mb-3">
           <div class="input-group-prepend">
@@ -87,8 +96,9 @@
         </div>
         <!-- Button -->
         <div class="input-group my-4">
-          <button class="btn btn-primary mx-auto btn-lg"
-            (click)="save(newhead.value, newdescription.value, newmsg.value, newtype.value, newdate.value, newimg.value); reset()">Create
+          <button type="submit" class="btn btn-primary mx-auto btn-lg"
+            (click)="save(newhead.value, newdescription.value, newmsg.value, newtype.value, newdate.value, newimg.value);"
+            [disabled]="postForm.invalid" onclick="window.location='index.html'">Create
             Post</button>
         </div>
       </form>

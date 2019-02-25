@@ -14,7 +14,6 @@ import { NewPostComponent } from './new-post/new-post.component';
 import { NewPostPageComponent } from './new-post-page/new-post-page.component';
 import { AngularFireModule } from 'angularfire2';
 import { AngularFireDatabaseModule } from 'angularfire2/database';
-import { AngularFireAuthModule } from 'angularfire2/auth';
 import { SimplePostComponent } from './simple-post/simple-post.component';
 import { postsAndUsersService } from './posts-and-users.service'
 import { environment } from '../environments/environment';
@@ -22,6 +21,9 @@ import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { AngularFontAwesomeModule } from 'angular-font-awesome';
 import { ReactiveFormsModule } from '@angular/forms';
 import { FormsModule } from '@angular/forms';
+import { AngularFireAuthModule } from 'angularfire2/auth';
+import { AuthService } from './auth.service';
+
 
 
 
@@ -50,8 +52,9 @@ import { FormsModule } from '@angular/forms';
     AngularFontAwesomeModule,
     ReactiveFormsModule,
     FormsModule,
+    AngularFireAuthModule,
   ],
-  providers: [postsAndUsersService],
+  providers: [postsAndUsersService, AuthService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
