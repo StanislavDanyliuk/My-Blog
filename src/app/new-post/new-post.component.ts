@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { AngularFireDatabase, AngularFireList } from 'angularfire2/database';
 import { Observable } from 'rxjs';
-import { FormBuilder, FormGroup, Validators, ReactiveFormsModule, FormsModule } from '@angular/forms';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 
 @Component({
   selector: 'app-new-post',
@@ -34,15 +34,13 @@ export class NewPostComponent implements OnInit {
       Description: ['', [Validators.required, Validators.minLength(4)]],
       Message: ['', [Validators.required, Validators.minLength(100)]],
       Date: ['', Validators.required],
-
     });
   }
-  get f() { return this.postForm.controls; }
-
+  get f() {
+    return this.postForm.controls;
+  }
   onSubmit() {
     this.submitted = true;
-
-    // stop here if form is invalid
     if (this.postForm.invalid) {
       return;
     }
