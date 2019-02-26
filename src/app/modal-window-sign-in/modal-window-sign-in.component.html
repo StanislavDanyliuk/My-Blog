@@ -3,8 +3,6 @@
   <div class="modal-dialog">
     <div class="modal-content">
 
-
-
       <!-- Modal Header -->
       <div class="modal-header">
         <ul class="nav nav-tabs" role="tablist">
@@ -29,11 +27,29 @@
                 <form action="#">
                   <div class="form-group">
                     <input type="text" class="form-control" id="email-login" required placeholder="Email address:"
-                      autocomplete="email" [(ngModel)]="email" name="email">
+                      autocomplete="email" [(ngModel)]="email" name="email" #contactemail='ngModel'
+                      pattern="^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$">
+                    <div class="alert alert-danger" [hidden]="contactemail.valid || contactemail.untouched">
+                      <div *ngIf="contactemail.errors && contactemail.errors.required">
+                        Email is required
+                      </div>
+                      <div *ngIf="contactemail.errors && contactemail.errors.pattern">
+                        Email is invalid
+                      </div>
+                    </div>
                   </div>
                   <div class="form-group">
                     <input type="password" class="form-control" id="pwd-login" required placeholder="Password:"
-                      autocomplete="current-password" [(ngModel)]="password" name="password">
+                      autocomplete="current-password" [(ngModel)]="password" name="password" #pass='ngModel'
+                      minlength="6">
+                    <div class="alert alert-danger" [hidden]="pass.valid || pass.untouched">
+                      <div *ngIf="pass.errors && pass.errors.required">
+                        Password is required
+                      </div>
+                      <div *ngIf="pass.errors && pass.errors.pattern">
+                        Password is invalid
+                      </div>
+                    </div>
                   </div>
                   <button class="btn btn-success btn-block" type="submit" (click)="login()"
                     [disabled]="!email || !password">Sign In</button>
@@ -42,42 +58,42 @@
 
               <!-- reg -->
               <div id="menu1" class="container tab-pane fade"><br>
-                <form action="#" [formGroup]="modalForm" (ngSubmit)="onSubmit()">
-                  <!-- <div class="form-group">
-                  <input type="text" class="form-control" id="name" required placeholder="Full Name:">
-                </div> -->
+                <form action="#" (ngSubmit)="onSubmit()">
                   <div class="form-group">
                     <input type="text" class="form-control" id="email-reg" required placeholder="Email address:"
-                      autocomplete="email" [(ngModel)]="email" name="email-reg" formControlName="Email"
-                      [ngClass]="{ 'is-invalid': submitted && f.Email.errors }">
-                    <div *ngIf="submitted && f.Email.errors" class="invalid-feedback">
-                      <div *ngIf="f.Email.errors.required">Email is required</div>
+                      autocomplete="email" [(ngModel)]="email" name="email-reg" #emailreg='ngModel'
+                      pattern="^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$">
+                    <div class="alert alert-danger" [hidden]="emailreg.valid || emailreg.untouched">
+                      <div *ngIf="emailreg.errors && emailreg.errors.required">
+                        Email is required
+                      </div>
+                      <div *ngIf="emailreg.errors && emailreg.errors.pattern">
+                        Email is invalid
+                      </div>
                     </div>
                   </div>
                   <div class="form-group">
                     <input type="password" class="form-control" id="pwd-reg" required placeholder="Password:"
-                      autocomplete="new-password" [(ngModel)]="password" name="password-reg" formControlName="Password"
-                      [ngClass]="{ 'is-invalid': submitted && f.Password.errors }">
-                    <div *ngIf="submitted && f.Password.errors" class="invalid-feedback">
-                      <div *ngIf="f.Password.errors.required">Password is required</div>
-                      <div *ngIf="f.Header.errors.minlength">Header must be at least 6 characters</div>
+                      autocomplete="new-password" [(ngModel)]="password" name="password-reg" #passreg='ngModel'
+                      minlength="6">
+                    <div class="alert alert-danger" [hidden]="passreg.valid || passreg.untouched">
+                      <div *ngIf="passreg.errors && passreg.errors.required">
+                        Password is required
+                      </div>
+                      <div *ngIf="passreg.errors && passreg.errors.pattern">
+                        Password is invalid
+                      </div>
                     </div>
                   </div>
-                  <!-- <div class="form-group">
-                  <input type="password" class="form-control" id="rpwd-reg" required placeholder="Repeat Password:"
-                    autocomplete="new-password">
-                </div> -->
-
-
                   <button class="btn btn-primary btn-block" type="submit" (click)="signup()"
                     [disabled]="!email || !password">Registration</button>
                 </form>
               </div>
             </div>
           </div>
-          <h5 class="text-center" *ngIf="authService.user | async">Welcome {{ (authService.user | async)?.email }}!</h5>
-          <button class="btn btn-warning btn-block" (click)="logout()" *ngIf="authService.user | async">Logout</button>
         </div>
+        <h5 class="text-center" *ngIf="authService.user | async">Welcome {{ (authService.user | async)?.email }}!</h5>
+        <button class="btn btn-warning btn-block" (click)="logout()" *ngIf="authService.user | async">Logout</button>
       </div>
     </div>
   </div>
