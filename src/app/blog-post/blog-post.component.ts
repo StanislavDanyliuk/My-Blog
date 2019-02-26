@@ -19,5 +19,6 @@ export class BlogPostComponent implements OnInit {
   @Input() author: string;
   @Input() date: string;
   @Input() description: string;
+  @Input() toggle: string;
 
 }

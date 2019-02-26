@@ -24,8 +24,9 @@ export class NewPostComponent implements OnInit {
     newtype: string,
     newDate: string,
     newImg: string,
+    newToggle: string,
   ) {
-    this.postRef.push({ title: newHead, description: newDescription, msg: newMsg, type: newtype, date: newDate, img: newImg });
+    this.postRef.push({ title: newHead, description: newDescription, msg: newMsg, type: newtype, date: newDate, img: newImg, toggle: newToggle, });
   }
 
   ngOnInit() {

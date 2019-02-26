@@ -12,7 +12,7 @@ export class PageContentComponent implements OnInit {
 
   constructor(db: AngularFireDatabase) {
     db.list('/posts').valueChanges().subscribe(post => {
-      this.posts = post;
+      this.posts = post.reverse();
     })
   }
   ngOnInit() {
