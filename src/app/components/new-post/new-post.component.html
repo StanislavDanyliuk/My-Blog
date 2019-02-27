@@ -20,6 +20,16 @@
             <div *ngIf="f.Header.errors.minlength">Header must be at least 4 characters</div>
           </div>
         </div>
+
+        <!-- user -->
+        <div class="input-group mb-3" [hidden]='true'>
+          <div class="input-group-prepend">
+            <span class="input-group-text" id="basic-addon6">User</span>
+          </div>
+          <input type="text" class="form-control" id="basic-user" aria-describedby="basic-addon" #user
+            value="{{(authService.user | async)?.email }}" readonly>
+        </div>
+
         <!-- Description -->
         <div class="input-group mb-3">
           <div class="input-group-prepend">
@@ -34,28 +44,12 @@
         </div>
         <!-- Date -->
 
-        <!-- <div class="input-group input-group-lg mb-3">
-          <div class="input-group-prepend">
-            <span class="input-group-text" id="basic-addon">data</span>
-          </div>
-          <input type="text" class="form-control" id="basic-date" aria-describedby="basic-addon" #newdate value={{this.today}}>
-        </div> -->
-
-        <div class="input-group mb-3">
+        <div class="input-group mb-3" [hidden]='true'>
           <div class="input-group-prepend">
             <span class="input-group-text" id="basic-addon6">Date</span>
           </div>
-          <input class="form-control" placeholder="yyyy-mm-dd" name="dp" ngbDatepicker #d="ngbDatepicker" #newdate
-            (click)="d.toggle()" aria-describedby="basic-addon6" formControlName="Date"
-            [ngClass]="{ 'is-invalid': submitted && f.Date.errors }">
-          <div class="input-group-append">
-            <button class="btn btn-outline-secondary" (click)="d.toggle()" type="button">
-              <fa name="calendar"></fa>
-            </button>
-          </div>
-          <div *ngIf="submitted && f.Date.errors" class="invalid-feedback">
-            <div *ngIf="f.Date.errors.required">Date is required</div>
-          </div>
+          <input type="text" class="form-control" id="basic-date" aria-describedby="basic-addon" #newdate
+            value='{{today | date}}'>
         </div>
 
         <!-- Type -->
@@ -79,7 +73,8 @@
         </div>
         <!-- Toggle -->
         <div class="custom-control custom-switch">
-          <input type="checkbox" class="custom-control-input" id="switch1" #newtoggle>
+          <input type="checkbox" class="custom-control-input" id="switch1" #newtoggle checked
+            (change)='onCheck(newtoggle.checked)'>
           <label class="custom-control-label" for="switch1">Post?</label>
         </div>
         <!-- Message -->
@@ -97,8 +92,8 @@
         <!-- Button -->
         <div class="input-group my-4">
           <button type="submit" class="btn btn-primary mx-auto btn-lg"
-            (click)="save(newhead.value, newdescription.value, newmsg.value, newtype.value, newdate.value, newimg.value, newtoggle.value);"
-            [disabled]="postForm.invalid" onclick="window.location = 'index.html'">Create
+            (click)="save(newhead.value, newdescription.value, newmsg.value, newtype.value, newdate.value, newimg.value, newtoggle.value, user.value);"
+            [disabled]="postForm.invalid" onclick="window.location='index.html'">Create
             Post</button>
         </div>
       </form>

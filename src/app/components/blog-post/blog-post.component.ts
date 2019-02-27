@@ -16,9 +16,9 @@ export class BlogPostComponent implements OnInit {
   @Input() img: string;
   @Input() title: string;
   @Input() msg: string;
-  @Input() author: string;
+  @Input() user: string;
   @Input() date: string;
   @Input() description: string;
-  @Input() toggle: string;
+  @Input() toggle: boolean;
 
 }
