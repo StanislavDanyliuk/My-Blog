@@ -23,6 +23,7 @@ import { ReactiveFormsModule } from '@angular/forms';
 import { FormsModule } from '@angular/forms';
 import { AngularFireAuthModule } from 'angularfire2/auth';
 import { AuthService } from './services/auth.service';
+import { Ng2SearchPipeModule } from 'ng2-search-filter';
 
 
 
@@ -53,6 +54,8 @@ import { AuthService } from './services/auth.service';
     ReactiveFormsModule,
     FormsModule,
     AngularFireAuthModule,
+    Ng2SearchPipeModule,
+
   ],
   providers: [postsAndUsersService, AuthService],
   bootstrap: [AppComponent]

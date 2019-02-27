@@ -52,7 +52,7 @@ export class NewPostComponent implements core.OnInit {
   get f() {
     return this.postForm.controls;
   }
-  onSubmit(v) {
+  onSubmit() {
 
     this.submitted = true;
     if (this.postForm.invalid) {
