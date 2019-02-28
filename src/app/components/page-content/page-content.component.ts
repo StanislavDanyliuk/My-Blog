@@ -19,6 +19,6 @@ export class PageContentComponent implements OnInit {
   }
 
   filterCondition(post) {
-    return post.title.toLowerCase().indexOf(this.searchText.toLowerCase()) != -1;
+    return post.title.toLowerCase().indexOf(this.searchText.toLowerCase()) != -1, post.msg.toLowerCase().indexOf(this.searchText.toLowerCase()) != -1;
   }
 }

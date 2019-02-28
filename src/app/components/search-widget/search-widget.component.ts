@@ -10,8 +10,4 @@ export class SearchWidgetComponent implements OnInit {
   searchText: string = "";
   ngOnInit() {
   }
-
-  filterCondition(post) {
-    return post.title.toLowerCase().indexOf(this.searchText.toLowerCase()) != -1;
-  }
 }

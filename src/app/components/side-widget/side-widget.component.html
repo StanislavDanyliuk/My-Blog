@@ -2,8 +2,8 @@
 <div class="card my-4">
     <h5 class="card-header">Side Widget</h5>
     <div class="card-body">
-      Lorem ipsum dolor sit amet consectetur, adipisicing elit. Non sed ut laudantium quisquam, consequuntur
-      dolore magnam similique unde reprehenderit harum pariatur necessitatibus adipisci aliquid ad. Laudantium
-      modi dignissimos labore. Vitae.
+     <div *ngIf='posts?.length >= 1'>
+       We have {{posts?.length}} posts.
+     </div>
     </div>
   </div>
