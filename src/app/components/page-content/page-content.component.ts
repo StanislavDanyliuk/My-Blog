@@ -10,15 +10,25 @@ export class PageContentComponent implements OnInit {
   posts;
   searchText: string = "";
 
-  constructor(db: AngularFireDatabase) {
-    db.list('/posts').valueChanges().subscribe(post => {
+  constructor(public db: AngularFireDatabase) { }
+
+  getPosts() {
+    return this.db.list('/posts').valueChanges().subscribe(post => {
       this.posts = post.reverse();
     })
   }
-  ngOnInit() {
+
+  filterDate() {
+    return this.db.list('/posts').valueChanges().subscribe(post => {
+      this.posts = post;
+    })
   }
 
   filterCondition(post) {
-    return post.title.toLowerCase().indexOf(this.searchText.toLowerCase()) != -1, post.msg.toLowerCase().indexOf(this.searchText.toLowerCase()) != -1;
+    return post.title.toLowerCase().indexOf(this.searchText.toLowerCase()) != -1;
+  }
+
+  ngOnInit() {
+    this.getPosts();
   }
 }
