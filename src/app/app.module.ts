@@ -23,6 +23,7 @@ import { ReactiveFormsModule } from '@angular/forms';
 import { FormsModule } from '@angular/forms';
 import { AngularFireAuthModule } from 'angularfire2/auth';
 import { AuthService } from './services/auth.service';
+import { InfiniteScrollModule } from 'ngx-infinite-scroll';
 
 
 
@@ -53,6 +54,7 @@ import { AuthService } from './services/auth.service';
     ReactiveFormsModule,
     FormsModule,
     AngularFireAuthModule,
+    InfiniteScrollModule,
 
   ],
   providers: [postsAndUsersService, AuthService],
