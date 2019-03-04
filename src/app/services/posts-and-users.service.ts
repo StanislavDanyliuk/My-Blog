@@ -21,7 +21,7 @@ export class postsAndUsersService {
     let query;
 
     this.postRef = this.http.list('/posts', ref => {
-      query = (key) ? ref.orderByKey().endAt(key).limitToLast(2) : ref.orderByKey().limitToLast(2);
+      query = (key) ? ref.orderByKey().endAt(key).limitToLast(5) : ref.orderByKey().limitToLast(5);
       return query;
     }
     ).snapshotChanges().pipe(

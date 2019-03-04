@@ -14,8 +14,7 @@
           </a>
         </li>
         <li *ngIf="!(authService.user | async)" class="nav-item">
-          <a routerLink='/new' routerLinkActive='active' class="nav-link disabled" href="#">New
-            Post</a>
+          <a class="nav-link" style="cursor:pointer" (click)='Alert()'>New Post</a>
         </li>
         <li *ngIf="authService.user | async" class="nav-item">
           <a routerLink='/new' routerLinkActive='active' class="nav-link" href="#">New Post</a>

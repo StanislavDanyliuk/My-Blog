@@ -7,12 +7,18 @@ import { AuthService } from 'src/app/services/auth.service';
   templateUrl: './header.component.html',
   styleUrls: ['./header.component.css']
 })
+
+
+
 export class HeaderComponent implements OnInit {
   email: string;
+  
 
   constructor(public authService: AuthService) { }
 
   ngOnInit() {
   }
-
+  Alert() {
+    alert('You must be logged to share new post!')
+  }
 }
