@@ -18,6 +18,15 @@ export class PageContentComponent implements OnInit {
   SearchByTitle(post) {
     return post.title.toLowerCase().indexOf(this.searchText.toLowerCase()) != -1;
   }
+  SearchByMessage(post) {
+    return post.msg.toLowerCase().indexOf(this.searchText.toLowerCase()) != -1;
+  }
+  SearchByDescription(post) {
+    return post.description.toLowerCase().indexOf(this.searchText.toLowerCase()) != -1;
+  }
+  SearchByAuthor(post) {
+    return post.user.toLowerCase().indexOf(this.searchText.toLowerCase()) != -1;
+  }
 
   loadPosts() {
     this.postsAndUsersService.getData(this.key)
@@ -30,7 +39,7 @@ export class PageContentComponent implements OnInit {
         else
           this.posts = post.reverse();
         this.key = this.posts[this.posts.length - 1].key;
-        this.showSpinner = true;
+        this.showSpinner = false;
       });
   }
 
