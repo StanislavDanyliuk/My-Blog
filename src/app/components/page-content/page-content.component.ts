@@ -21,11 +21,7 @@ export class PageContentComponent implements OnInit {
   //   })
   // }
 
-  filterDate() {
-    return this.db.list('/posts').valueChanges().subscribe(post => {
-      this.posts = post;
-    })
-  }
+
 
   filterCondition(post) {
     return post.title.toLowerCase().indexOf(this.searchText.toLowerCase()) != -1;
@@ -34,8 +30,6 @@ export class PageContentComponent implements OnInit {
   loadPosts() {
     this.postsAndUsersService.getData(this.key)
       .subscribe(post => {
-        console.log(post);
-
         if (this.posts) {
           for (let i = post.length - 2; i >= 0; i--) {
             this.posts.push(post[i]);
@@ -48,11 +42,21 @@ export class PageContentComponent implements OnInit {
       });
   }
 
+  filterDateNew() {
+    return this.db.list('/posts').valueChanges().subscribe(post => {
+      this.posts = post.reverse();
+    })
+  }
+  filterDateOld() {
+    return this.db.list('/posts').valueChanges().subscribe(post => {
+      this.posts = post;
+    })
+  }
+
   onScroll() {
     this.loadPosts();
   }
 
   ngOnInit() {
-
   }
 }
