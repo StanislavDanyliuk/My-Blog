@@ -15,15 +15,7 @@ export class PageContentComponent implements OnInit {
 
   constructor(public db: AngularFireDatabase, public postsAndUsersService: postsAndUsersService) { this.loadPosts() }
 
-  // getPosts() {
-  //   return this.db.list('/posts').valueChanges().subscribe(post => {
-  //     this.posts = post.reverse();
-  //   })
-  // }
-
-
-
-  filterCondition(post) {
+  SearchByTitle(post) {
     return post.title.toLowerCase().indexOf(this.searchText.toLowerCase()) != -1;
   }
 
@@ -38,7 +30,7 @@ export class PageContentComponent implements OnInit {
         else
           this.posts = post.reverse();
         this.key = this.posts[this.posts.length - 1].key;
-        this.showSpinner = false;
+        this.showSpinner = true;
       });
   }
 
