@@ -14,9 +14,6 @@ export class postsAndUsersService {
   constructor(private http: AngularFireDatabase) {
   }
 
-  // getPosts() {
-  //   this.http.list('/posts').valueChanges();
-  // }
   getData(key?) {
     let query;
 

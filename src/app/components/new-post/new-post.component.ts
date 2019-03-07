@@ -31,7 +31,7 @@ export class NewPostComponent implements core.OnInit {
     newToggle: boolean,
     user: string,
   ) {
-    this.postRef.push({ title: newHead, description: newDescription, msg: newMsg, type: newtype, date: newDate, img: newImg, toggle: newToggle, user});
+    this.postRef.push({ title: newHead, description: newDescription, msg: newMsg, type: newtype, date: newDate, img: newImg, toggle: newToggle, user });
   }
 
   ngOnInit() {
@@ -45,9 +45,6 @@ export class NewPostComponent implements core.OnInit {
 
     })
 
-  }
-  onCheck(value) {
-    console.log(value)
   }
   get f() {
     return this.postForm.controls;
