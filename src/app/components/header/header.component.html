@@ -13,11 +13,9 @@
             <span class="sr-only"></span>
           </a>
         </li>
-        <li *ngIf="!(authService.user | async)" class="nav-item">
-          <a class="nav-link" style="cursor:pointer" [hidden]='true'>New Post</a>
-        </li>
         <li *ngIf="authService.user | async" class="nav-item">
-          <a routerLink='/new' routerLinkActive='active' class="nav-link" href="#">New Post</a>
+          <a routerLink='/new' routerLinkActive='active' class="nav-link" href="#"
+            [hidden]='!(authService.user | async)'>New Post</a>
         </li>
         <li class="nav-item">
           <a class="nav-link" data-toggle="modal" data-target="#myModal" href="/"
